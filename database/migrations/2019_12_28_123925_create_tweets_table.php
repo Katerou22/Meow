@@ -8,7 +8,8 @@
 
 		public function up() {
 			Schema::create('tweets', function (Blueprint $table) {
-				$table->bigIncrements('id');
+                $table->bigIncrements('id');
+                $table->string('avatar')->nullable();
 
 
 				$table->integer('user_id')->unsigned();
