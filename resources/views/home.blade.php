@@ -11,11 +11,14 @@
                             Home
                         </strong></div>
 
+
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-2">
-                                <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_bigger.png" alt="..."
+                                @foreach (auth()->user()->avatar()->orderBy('id','DESC')->get() as $avatar)
+                                <img src="{{$avatar->avatar}}" alt="..."
                                      class="img-thumbnail" style="border-radius: 100px">
+                                     @endforeach
                             </div>
                             <div class="col-md-10">
                                 <textarea placeholder="Whats Happening..." name="body" class="form-control border-0" id="" cols="30"
@@ -48,7 +51,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <img src="https://abs.twimg.com/sticky/default_profile_images/default_profile_bigger.png" alt="..."
+                                        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="..."
                                              class="img-thumbnail" style="border-radius: 100px">
                                     </div>
                                     <div class="col-md-10">

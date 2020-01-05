@@ -38,5 +38,10 @@
 
 		public function tweets() {
 			return $this->hasMany(Tweet::class);
-		}
+        }
+
+        public function avatar()
+        {
+            return $this->hasOne(Avatar::class);
+        }
 	}

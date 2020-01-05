@@ -16,6 +16,8 @@
 				                        'body' => $request->body,
 			                        ]);
 
-			return back();
-		}
+			return view('home');
+        }
+
+
 	}
