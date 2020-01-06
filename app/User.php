@@ -15,7 +15,7 @@
 		 * @var array
 		 */
 		protected $fillable = [
-			'name', 'email', 'password', 'avatar',
+			'name', 'email', 'password',
 		];
 
 		/**
@@ -40,8 +40,4 @@
 			return $this->hasMany(Tweet::class);
         }
 
-        public function avatar()
-        {
-            return $this->hasOne(Avatar::class);
-        }
 	}

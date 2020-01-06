@@ -1,6 +1,7 @@
 <?php
 
-	namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
+    use App\User;
 
 	use Illuminate\Http\Request;
 
@@ -10,12 +11,9 @@
 				                   'body' => 'required',
 			                   ]);
 
-			$user = auth()->user();
-
-			$user->tweets()->create([
+			auth()->user()->tweets()->create([
 				                        'body' => $request->body,
 			                        ]);
-
 			return view('home');
         }
 
