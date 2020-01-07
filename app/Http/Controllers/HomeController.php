@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -24,6 +24,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = auth()->user();
+        if(Storage::disk('local_public')->exists("users/{$user->id}/avatar.jpg")){
+            return view('home');
+        }
+        else {
+            Storage::disk('local_public')->copy("users/avatar.jpg", "users/{$user->id}/avatar.jpg");
+            return view('home');
+        }
+
+
     }
 }

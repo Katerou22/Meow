@@ -15,8 +15,10 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-2">
-                                <img src="/users/{{auth()->user()->id}}/avatar.jpg" alt="..."
-                                     class="img-thumbnail" style="border-radius: 100px">
+                                <a  href="/avatar">
+                                    <img src="/users/{{auth()->user()->id}}/avatar.jpg" alt="..."
+                                    class="img-thumbnail" style="border-radius: 100px">
+                                    </a>
 
                             </div>
                             <div class="col-md-10">
@@ -43,17 +45,16 @@
                 </div>
 
                 {{-- @if ($users->tweets->count() > 0) --}}
-                @foreach(App\User::all() as $user)
-                    @foreach ($user->tweets()->orderBy('id','DESC')->get() as $tweet)
+                    @foreach (App\Tweet::orderBy('id','DESC')->get() as $tweet)
                         <div class="card border-top-0" style="border-radius: 0 !important;">
 
 
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <img src="/users/{{$user->id}}/avatar.jpg" alt="..."
-                                             class="img-thumbnail" style="border-radius: 100px">
-                                    <span class="col-md-2">
+                                            <img src="/users/{{$tweet->user->id}}/avatar.jpg" alt="..."
+                                            class="img-thumbnail" style="border-radius: 100px">
+                                    <span style="margin-left: 20px">
                                         {{$tweet->user->name}}
                                     </span>
 
@@ -70,7 +71,6 @@
 
                         </div>
                     @endforeach
-                @endforeach
                 {{-- @endif --}}
 
 
