@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function addAvatar(Request $request)
     {
-        $file = $request->file('photo');
+        $file = $request->file('avatar');
         // $name = time() . $file->getClientOriginalName();
         $user = auth()->user();
         $path = "users/{$user->id}";
@@ -30,13 +30,9 @@ class UserController extends Controller
 
 
         // $name2 = $name;
-        return redirect('home');
+        return view('home');
 
     }
-    public function index()
-        {
-            return view('/avatar');
-            echo "salam";
-        }
+
 
 }

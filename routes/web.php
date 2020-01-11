@@ -12,6 +12,7 @@
 
     Route::post('/tweet', 'TweetController@tweet')->middleware('auth');
 
+
     Route::get('/avatar', 'UserController@index');
 
-    Route::post('/avatar', 'UserController@addAvatar')->name('addAvatar');
+    Route::post('/home', 'UserController@addAvatar')->name('addAvatar');
