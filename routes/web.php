@@ -16,3 +16,9 @@
     Route::get('/avatar', 'UserController@index');
 
     Route::post('/home', 'UserController@addAvatar')->name('addAvatar');
+
+    Route::post('/follow', 'FollowerController@follow')->middleware('auth');
+
+    Route::get('/explorer', function() {
+        return view('explorer');
+    });

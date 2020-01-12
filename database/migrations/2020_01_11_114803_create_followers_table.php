@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPhotoToTweetsTable extends Migration
+class CreateFollowersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddPhotoToTweetsTable extends Migration
      */
     public function up()
     {
-        Schema::table('tweets', function (Blueprint $table) {
-            $table->string('photo')->nullable();
+        Schema::create('followers', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->bigInteger('user_id');
+            $table->bigInteger('follow_id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddPhotoToTweetsTable extends Migration
      */
     public function down()
     {
-        Schema::table('photo', function (Blueprint $table){
-
-        });
+        Schema::dropIfExists('followers');
     }
 }
