@@ -10,15 +10,21 @@
 	Route::get('/home', 'HomeController@index')->name('home');
 
 
-    Route::post('/tweet', 'TweetController@tweet')->middleware('auth');
+	Route::post('/tweet', 'TweetController@tweet')->middleware('auth');
 
 
-    Route::get('/avatar', 'UserController@index');
+	Route::get('/avatar', 'UserController@index');
 
-    Route::post('/home', 'UserController@addAvatar')->name('addAvatar');
+	Route::post('/home', 'UserController@addAvatar')->name('addAvatar');
 
-    Route::post('/follow', 'FollowerController@follow')->middleware('auth');
+	Route::post('/follow', 'FollowerController@follow')->middleware('auth');
 
-    Route::get('/explorer', function() {
-        return view('explorer');
-    });
+	Route::get('/explorer', function () {
+		return view('explorer');
+	});
+	Route::get('/logout', function () {
+
+		auth()->logout();
+
+		return redirect('/');
+	});
