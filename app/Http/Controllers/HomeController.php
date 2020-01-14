@@ -25,16 +25,17 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Follower $follower, User $User)
+    public function index()
     {
 
         $user = auth()->user();
         if(Storage::disk('local_public')->exists("users/{$user->id}/avatar.jpg")){
-            return view('home');
+            $setavatar = true;
+            return view('home',compact('setavatar'));
         }
         else {
-            Storage::disk('local_public')->copy("users/avatar.jpg", "users/{$user->id}/avatar.jpg");
-            return view('home',compact('follower'));
+            $setavatar = false;
+            return view('home',compact('setavatar'));
         }
 
 

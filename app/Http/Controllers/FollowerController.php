@@ -8,12 +8,12 @@ use App\Follower;
 
 class FollowerController extends Controller
 {
-    public function follow(Request $request, Follower $follower)
+    public function follow($followId, Follower $follower)
     {
         $user = auth()->user();
 
             $follower->create([
-                'follow_id' => $request->follow_id,
+                'follow_id' => $followId,
                 'user_id' => $user->id,
             ]);
 
@@ -21,11 +21,17 @@ class FollowerController extends Controller
 
 
 
-        return redirect('home');
+        return back();
     }
 
-    public function unfollow(Request $request)
+    public function unfollow($followId,Follower $follower)
     {
+        $user = auth()->user();
+
+        Follower::where('follow_id',$followId)->where('user_id',$user->id)->delete();
+
+        return back();
+
 
     }
 }

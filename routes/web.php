@@ -17,7 +17,11 @@
 
     Route::post('/home', 'UserController@addAvatar')->name('addAvatar');
 
-    Route::post('/follow', 'FollowerController@follow')->middleware('auth');
+    Route::get("follow/{user_id}", 'FollowerController@follow')->middleware('auth');
+
+    Route::get("unfollow/{user_id}", 'FollowerController@unfollow')->middleware('auth');
+
+    Route::get("delete/{tweet}", 'TweetController@delete')->middleware('auth');
 
     Route::get('/explorer', function() {
         return view('explorer');

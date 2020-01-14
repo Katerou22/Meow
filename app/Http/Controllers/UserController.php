@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
     public function addAvatar(Request $request)
     {
         $file = $request->file('avatar');
@@ -17,20 +18,7 @@ class UserController extends Controller
 
         $file->move($path, 'avatar.jpg');
 
-        // if(isset($name2)){
-        //     if(Storage::exists("users/avatar/{$name2}"));
-        //     {
-        //         File::delete("users/avatar/{$name2}");
-        //     }
-        // }
-
-        // if(isset($name2)){
-        //     return view('/home');
-        // }
-
-
-        // $name2 = $name;
-        return view('home');
+        return redirect('home');
 
     }
 
