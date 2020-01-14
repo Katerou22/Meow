@@ -12,7 +12,6 @@ class UserController extends Controller
     public function addAvatar(Request $request)
     {
         $file = $request->file('avatar');
-        // $name = time() . $file->getClientOriginalName();
         $user = auth()->user();
         $path = "users/{$user->id}";
 
